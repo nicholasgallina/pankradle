@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --color-highlighted: #ccb895;
+  --color-decal: ##a98248;
+  --color-loginHover: #c7c1c6;
+  --color-header: #3f34d1;
+}
+
+ol {
+  color: white;
+}
+
+body {
+  position: relative;
+  background-color: #8B6F47;
+}
+
+body::before {
+  filter: invert(70%) sepia(50%) saturate(500%) hue-rotate(0deg);
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  
+  background-image: url('/icons/bg.svg');
+  background-repeat: repeat;
+  
+  opacity: .25;
+}
