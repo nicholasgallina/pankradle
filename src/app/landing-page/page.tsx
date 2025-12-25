@@ -13,11 +13,12 @@ export default function LandingPage() {
       <h3 className=" text-2xl font-medium">
         Guess the mystery UFC event in 4 guesses!
       </h3>
-      <a
-        href="/"
-        className="p-2 cursor-pointer text-3xl stroke-1 stroke-black font-black hover:text-highlighted transition-all duration-200 ease-in-out "
-      >
-        Play
+      <a className="mt-2 mb-2" href="/">
+        <img
+          src="/icons/play-button.svg"
+          alt="Play"
+          className="hover:scale-105 transition-transform duration-200"
+        />
       </a>
       <div className="text-xl font-medium">
         <p>{today}</p>

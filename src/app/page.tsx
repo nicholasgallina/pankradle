@@ -1,7 +1,12 @@
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
 export default function Home() {
   return (
-    <h1 className="my-10 stroke-2 stroke-black text-center font-bold text-4xl">
-      Pankradle
-    </h1>
+    <div className="px-25">
+      <Header />
+      <h1 className="text-center text-9xl">Game</h1>
+      <Footer />
+    </div>
   );
 }
