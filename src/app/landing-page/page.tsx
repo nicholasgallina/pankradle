@@ -1,7 +1,7 @@
 // pankradle.io/landing-page
 
 export default function LandingPage() {
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toLocaleDateString("en-CA");
 
   return (
     <section className="flex flex-col justify-center items-center px-4 h-screen overflow-hidden">

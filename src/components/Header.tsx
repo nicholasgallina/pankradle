@@ -10,6 +10,7 @@ export default function Header() {
           <img
             className="hover:brightness-110 hover:opacity-50 transition-all duration-200 cursor-pointer"
             src="/logo.svg"
+            title="Pankradle Logo"
             alt="Pankradle Logo"
           />
         </a>

@@ -1,11 +1,12 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import FighterGrid from "../components/FIghterGrid";
 
-export default function Home() {
+export default function Game() {
   return (
     <div className="px-25">
       <Header />
-      <h1 className="text-center text-9xl">Game</h1>
+      <FighterGrid />
       <Footer />
     </div>
   );
