@@ -1,4 +1,4 @@
-#Pankradle
+# Pankradle
 
 A daily UFC PPV guessing game inspired by Wordle.
 
