@@ -1,0 +1,104 @@
+{
+  "events": [
+    {
+      "id": "ufc-280",
+      "date": "2022-10-22",
+      "fighters": [
+        {
+          "name": "Islam Makhachev",
+          "country": "RU",
+          "image": "/fighters/makhachev.png",
+          "position": 1
+        },
+        {
+          "name": "Charles Oliveira",
+          "country": "BR",
+          "image": "/fighters/oliveira.png",
+          "position": 2
+        },
+        {
+          "name": "Aljamain Sterling",
+          "country": "US",
+          "image": "/fighters/sterling.png",
+          "position": 3
+        },
+        {
+          "name": "T.J. Dillashaw",
+          "country": "US",
+          "image": "/fighters/dillashaw.png",
+          "position": 4
+        },
+        {
+          "name": "Sean O'Malley",
+          "country": "US",
+          "image": "/fighters/omalley.png",
+          "position": 5
+        },
+        {
+          "name": "Petr Yan",
+          "country": "RU",
+          "image": "/fighters/yan.png",
+          "position": 6
+        },
+        {
+          "name": "Beneil Dariush",
+          "country": "US",
+          "image": "/fighters/dariush.png",
+          "position": 7
+        },
+        {
+          "name": "Mateusz Gamrot",
+          "country": "PL",
+          "image": "/fighters/gamrot.png",
+          "position": 8
+        },
+        {
+          "name": "Manon Fiorot",
+          "country": "FR",
+          "image": "/fighters/fiorot.png",
+          "position": 9
+        },
+        {
+          "name": "Katlyn Chookagian",
+          "country": "US",
+          "image": "/fighters/chookagian.png",
+          "position": 10
+        }    
+      ]
+    }
+  ],
+  
+  "allFighters": [
+    "Islam Dulatov",
+    "Islam Makhachev",
+    "Charles Oliveira",
+    "Aljamain Sterling",
+    "T.J. Dillashaw",
+    "Sean O'Malley",
+    "Petr Yan",
+    "Beneil Dariush",
+    "Mateusz Gamrot",
+    "Manon Fiorot",
+    "Katlyn Chookagian",
+    "Conor McGregor",
+    "Khabib Nurmagomedov",
+    "Jon Jones",
+    "Alexander Volkanovski",
+    "Max Holloway",
+    "Dustin Poirier",
+    "Justin Gaethje",
+    "Michael Chandler",
+    "Amanda Nunes",
+    "Valentina Shevchenko",
+    "Zhang Weili",
+    "Rose Namajunas",
+    "Kamaru Usman",
+    "Leon Edwards",
+    "Colby Covington",
+    "Khamzat Chimaev",
+    "Israel Adesanya",
+    "Alex Pereira",
+    "Robert Whittaker",
+    "Jiri Prochazka"
+  ]
+}
