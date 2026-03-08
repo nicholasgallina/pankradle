@@ -10,9 +10,9 @@ Each day presents itself with a random UFC numbered-event. The game begins with 
 Each incorrect guess reveals the subsequent bout on the card. The game ends when a player guesses the two fighters headlining the respective event OR the player runs out of guesses, and the headliner is revealed anyway.
 
 ## Stack
-Next.js (App Router)
-TypeScript
-Tailwind CSS
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
 
 ## Project Status
 Currently in active development. Next steps include:
