@@ -33,14 +33,15 @@ export default function EventBox() {
       .then((data) => setEvent(data));
   }, []);
 
-  if (!event) return <p className="text-white">Loading...</p>;
-
-  const bouts = event.bouts;
-  const MAX_GUESSES = bouts.length - 1;
   const [fighter1Input, setFighter1Input] = useState("");
   const [fighter2Input, setFighter2Input] = useState("");
   const [isGameOver, setIsGameOver] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+
+  if (!event) return <p className="text-white">Loading...</p>;
+
+  const bouts = event.bouts;
+  const MAX_GUESSES = bouts.length - 1;
 
   // bouts[0] is the main event (hidden until guessed correctly)
   // bouts[1..n] are revealed progressively as guesses are used
