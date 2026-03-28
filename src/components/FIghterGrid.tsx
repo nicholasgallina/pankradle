@@ -301,9 +301,6 @@ export default function FighterGrid() {
           );
         })}
       </div>
-      <div className="flex justify-center mb-20">
-        <SubmitButton />
-      </div>
     </>
   );
 }

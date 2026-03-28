@@ -50,23 +50,26 @@ export async function getTodaysEvent(): Promise<Event> {
   const event = eventResult.rows[0];
 
   const boutsResult = await pool.query(
-    `SELECT
-      b.id,
-      b.bout_order,
-      b.weight_class,
-      f1.first_name || ' ' || f1.last_name AS fighter1_name,
-      f1.image_url AS fighter1_image,
-      f1.country AS fighter1_country,
-      f2.first_name || ' ' || f2.last_name AS fighter2_name,
-      f2.image_url AS fighter2_image,
-      f2.country AS fighter2_country
-    FROM bouts b
-    LEFT JOIN fighters f1 ON b.fighter1_id = f1.id
-    LEFT JOIN fighters f2 ON b.fighter2_id = f2.id
-    WHERE b.event_id = $1
-    ORDER BY b.bout_order ASC`,
-    [event.id]
-  );
+  `SELECT
+    b.id,
+    b.bout_order,
+    b.weight_class,
+    f1.first_name || ' ' || f1.last_name AS fighter1_name,
+    f1.image_url AS fighter1_image,
+    f1.country AS fighter1_country,
+    f2.first_name || ' ' || f2.last_name AS fighter2_name,
+    f2.image_url AS fighter2_image,
+    f2.country AS fighter2_country
+  FROM bouts b
+  LEFT JOIN fighters f1 ON b.fighter1_id = f1.id
+  LEFT JOIN fighters f2 ON b.fighter2_id = f2.id
+  WHERE b.event_id = $1 AND b.card_segment = 'main'
+  ORDER BY b.bout_order ASC`,
+  [event.id]
+);
+
+console.log("event id:", event.id);
+console.log("bouts count:", boutsResult.rows.length);
 
   return {
     name: event.name,

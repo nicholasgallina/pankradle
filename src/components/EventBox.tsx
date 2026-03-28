@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import BoutBox from "./BoutBox";
+import Timer from "./Timer";
+import SubmitButton from "./SubmitButton";
 
 type Fighter = {
   name: string;
@@ -37,8 +39,16 @@ export default function EventBox() {
   const [fighter2Input, setFighter2Input] = useState("");
   const [isGameOver, setIsGameOver] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [allFighters, setAllFighters] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetch("/api/fighters")
+      .then((res) => res.json())
+      .then((data) => setAllFighters(data));
+  }, []);
 
   if (!event) return <p className="text-white">Loading...</p>;
+  console.log(event);
 
   const bouts = event.bouts;
   const MAX_GUESSES = bouts.length - 1;
@@ -48,6 +58,9 @@ export default function EventBox() {
   // on 0 guesses used: only bouts[4] visible (last bout on card)
   // on 1 guess wrong: bouts[3] also revealed, etc.
   const revealedFromIndex = bouts.length - 1 - guessesUsed;
+
+  console.log("bouts.length:", bouts.length);
+  console.log("revealedFromIndex:", revealedFromIndex);
 
   const handleSubmit = () => {
     const mainFighter1 = bouts[0].fighter1.name.toLowerCase();
@@ -76,24 +89,37 @@ export default function EventBox() {
   };
 
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="w-full max-w-6xl mx-auto">
       {/* Event metadata */}
-      <h2 className="text-white font-bold text-2xl mb-1">{event.name}</h2>
-      <p className="text-gray-400 text-sm mb-2">
-        {event.date} · {event.location}
-      </p>
+      <div className="grid grid-cols-3 items-center w-full m-1">
+        <h2 className="text-black font-bold text-4xl m-2">{event.name}</h2>
 
-      {/* Guesses remaining */}
-      <p className="text-white mb-4">
-        Guesses remaining:{" "}
-        <span className="font-bold">{MAX_GUESSES - guessesUsed}</span>
-      </p>
+        {/* GUESSES */}
+        <div className="flex gap-2 justify-center mb-4">
+          {Array.from({ length: MAX_GUESSES }).map((_, i) => (
+            <div
+              key={i}
+              className={`w-6 h-6 rounded-full border-2 border-white ${
+                i >= MAX_GUESSES - guessesUsed ? "bg-transparent" : "bg-white"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* TIMER */}
+        <div className="flex justify-end">
+          <Timer />
+        </div>
+      </div>
 
       {/* Bout grid */}
       <div className="grid grid-cols-2 gap-4 w-full mb-6">
         {bouts.map((bout, i) => {
           const isMainEvent = i === 0;
           const isRevealed = isMainEvent ? isGameOver : i >= revealedFromIndex;
+          console.log(
+            `bout ${i}: isRevealed=${isRevealed}, isMainEvent=${isMainEvent}`,
+          );
 
           return (
             <BoutBox
@@ -102,38 +128,33 @@ export default function EventBox() {
               fighter2={bout.fighter2}
               weightClass={bout.weightClass}
               isRevealed={isRevealed}
+              isMainEvent={i === 0}
+              fighterInput1={fighter1Input}
+              fighterInput2={fighter2Input}
+              onInput1Change={(val) => {
+                console.log("input1 changed:", val);
+                setFighter1Input(val);
+              }}
+              onInput2Change={(val) => {
+                console.log("input2 changed:", val);
+                setFighter2Input(val);
+              }}
+              allFighters={allFighters}
+              onFighterSelect1={(f) => setFighter1Input(f)}
+              onFighterSelect2={(f) => setFighter2Input(f)}
             />
           );
         })}
       </div>
 
-      {/* Guess inputs */}
+      {/* GAME STATE: GUESS */}
       {!isGameOver && (
-        <div className="flex gap-4 mb-4">
-          <input
-            type="text"
-            value={fighter1Input}
-            onChange={(e) => setFighter1Input(e.target.value)}
-            placeholder="Fighter 1"
-            className="bg-transparent border border-white text-white px-4 py-2 rounded"
-          />
-          <input
-            type="text"
-            value={fighter2Input}
-            onChange={(e) => setFighter2Input(e.target.value)}
-            placeholder="Fighter 2"
-            className="bg-transparent border border-white text-white px-4 py-2 rounded"
-          />
-          <button
-            onClick={handleSubmit}
-            className="bg-[#a98148] text-white font-bold px-6 py-2 rounded"
-          >
-            Submit
-          </button>
+        <div className="flex justify-center mb-20">
+          <SubmitButton onClick={handleSubmit} />
         </div>
       )}
 
-      {/* Game over states */}
+      {/* GAME STATE: OVER */}
       {isGameOver && isCorrect && (
         <p className="text-green-400 font-bold text-xl">Correct! 🏆</p>
       )}

@@ -18,7 +18,7 @@ export default function NewsTicker() {
   if (items.length === 0) return null;
 
   return (
-    <div className="w-full bg-transparent border-b border-[#a98148] overflow-hidden py-2">
+    <div className="w-full bg-transparent border-[#000000] border-b-6 overflow-hidden py-2">
       <div className="flex animate-marquee whitespace-nowrap">
         {items.concat(items).map((item, i) => (
           <a

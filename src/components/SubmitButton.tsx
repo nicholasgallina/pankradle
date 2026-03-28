@@ -1,8 +1,11 @@
 // src/app/components
 
-export default function SubmitButton() {
+export default function SubmitButton({ onClick }: { onClick: () => void }) {
   return (
-    <button className="cursor-pointer hover:scale-105 transition-all duration-200">
+    <button
+      onClick={onClick}
+      className="cursor-pointer hover:scale-105 transition-all duration-200"
+    >
       <img src="/icons/submit-button.svg"></img>
     </button>
   );
