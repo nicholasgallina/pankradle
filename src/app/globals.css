@@ -114,3 +114,13 @@ nextjs-portal {
 button, a, [class*="cursor-pointer"] {
   cursor: pointer;
 }
+
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.animate-fadeOut {
+  animation: fadeOut 0.5s ease-out forwards;
+}

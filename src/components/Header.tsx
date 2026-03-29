@@ -1,5 +1,6 @@
 import HintButton from "./HintButton";
 import RulesButton from "./RulesButton";
+import MusicButton from "./MusicButton";
 
 // src/app/components/Header.tsx
 export default function Header() {
@@ -16,6 +17,7 @@ export default function Header() {
         </a>
 
         <div className="flex gap-4">
+          <MusicButton />
           <HintButton />
           <RulesButton />
         </div>
