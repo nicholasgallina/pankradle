@@ -1,0 +1,10 @@
+UPDATE fighters SET image_url = 'https://pub-52ac7281d9ba476dbf81faf67c9b2c08.r2.dev/michael_bisping.png' WHERE first_name = 'Michael' AND last_name = 'Bisping';
+UPDATE fighters SET image_url = 'https://pub-52ac7281d9ba476dbf81faf67c9b2c08.r2.dev/luke_rockhold.png' WHERE first_name = 'Luke' AND last_name = 'Rockhold';
+UPDATE fighters SET image_url = 'https://pub-52ac7281d9ba476dbf81faf67c9b2c08.r2.dev/dominick_cruz.png' WHERE first_name = 'Dominick' AND last_name = 'Cruz';
+UPDATE fighters SET image_url = 'https://pub-52ac7281d9ba476dbf81faf67c9b2c08.r2.dev/urijah_faber.png' WHERE first_name = 'Urijah' AND last_name = 'Faber';
+UPDATE fighters SET image_url = 'https://pub-52ac7281d9ba476dbf81faf67c9b2c08.r2.dev/max_holloway.png' WHERE first_name = 'Max' AND last_name = 'Holloway';
+UPDATE fighters SET image_url = 'https://pub-52ac7281d9ba476dbf81faf67c9b2c08.r2.dev/ricardo_lamas.png' WHERE first_name = 'Ricardo' AND last_name = 'Lamas';
+UPDATE fighters SET image_url = 'https://pub-52ac7281d9ba476dbf81faf67c9b2c08.r2.dev/dan_henderson.png' WHERE first_name = 'Dan' AND last_name = 'Henderson';
+UPDATE fighters SET image_url = 'https://pub-52ac7281d9ba476dbf81faf67c9b2c08.r2.dev/hector_lombard.png' WHERE first_name = 'Hector' AND last_name = 'Lombard';
+UPDATE fighters SET image_url = 'https://pub-52ac7281d9ba476dbf81faf67c9b2c08.r2.dev/dustin_poirier.png' WHERE first_name = 'Dustin' AND last_name = 'Poirier';
+UPDATE fighters SET image_url = 'https://pub-52ac7281d9ba476dbf81faf67c9b2c08.r2.dev/bobby_green.png' WHERE first_name = 'Bobby' AND last_name = 'Green';

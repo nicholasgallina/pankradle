@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function MusicButton() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -13,25 +13,22 @@ export default function MusicButton() {
   const [showToast, setShowToast] = useState(false);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [isFading, setIsFading] = useState(false);
+  const isChainingRef = useRef(false);
 
-  const handleClick = async () => {
-    if (isPlaying && audio) {
-      audio.pause();
-      audio.currentTime = 0;
-      setIsPlaying(false);
-      setAudio(null);
-      return;
-    }
-
+  const playSong = async () => {
     const res = await fetch("/api/radio");
     const data = await res.json();
     setSong(data);
-
-    const startPoint = Math.floor(Math.random() * (data.duration - 40)) + 20;
+    const startPoint = isChainingRef.current
+      ? 0
+      : Math.floor(Math.random() * (data.duration - 40)) + 20;
     const newAudio = new Audio(data.audio_url);
     newAudio.currentTime = startPoint;
-    newAudio.play();
-
+    newAudio.onended = () => {
+      isChainingRef.current = true;
+      playSong();
+    };
+    await newAudio.play();
     setAudio(newAudio);
     setIsPlaying(true);
     setShowToast(true);
@@ -42,6 +39,17 @@ export default function MusicButton() {
     }, 4000);
   };
 
+  const handleClick = async () => {
+    if (isPlaying && audio) {
+      audio.pause();
+      audio.currentTime = 0;
+      setIsPlaying(false);
+      setAudio(null);
+    } else {
+      playSong();
+    }
+  };
+
   return (
     <div className="relative">
       <button
@@ -50,7 +58,6 @@ export default function MusicButton() {
       >
         <img src="/icons/music-button.svg" alt="Radio" />
       </button>
-
       {showToast && song && (
         <div
           className={`fixed top-4 left-1/2 -translate-x-1/2 bg-black bg-opacity-80 text-white px-6 py-3 rounded-lg flex items-center gap-4 z-50 ${isFading ? "animate-fadeOut" : "animate-slideDown"}`}

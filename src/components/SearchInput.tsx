@@ -80,7 +80,7 @@ export default function SearchInput({
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         onClick={(e) => e.stopPropagation()}
-        className="absolute inset-0 bg-transparent text-white font-bold text-xl text-center focus:outline-none"
+        className="absolute inset-0 bg-transparent text-white font-bold text-3xl text-center focus:outline-none"
       />
       {showDropdown && (
         <div

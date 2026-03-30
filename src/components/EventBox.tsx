@@ -123,6 +123,7 @@ export default function EventBox() {
 
           return (
             <BoutBox
+              side={i % 2 === 0 ? "left" : "right"}
               key={bout.id}
               fighter1={bout.fighter1}
               fighter2={bout.fighter2}
